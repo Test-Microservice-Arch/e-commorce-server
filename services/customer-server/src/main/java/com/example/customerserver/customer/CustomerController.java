@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/customer")
@@ -19,41 +20,36 @@ public class CustomerController {
     @Autowired
     private CustomerMapper customerMapper;
 
-//    @PostMapping
-//    public ResponseEntity<CustomerResponse> createCustomer(@RequestBody @Valid CustomerRequest customerRequest) {
-//        Customer customer = customerService.createCustomer(customerRequest);
-//        return ResponseEntity.ok(customerMapper.fromCustomer(customer));
-//    }
-
     @PostMapping
-    public ResponseEntity<String> createCustomer(@RequestBody @Valid CustomerRequest request) {
-        return ResponseEntity.ok(this.customerService.createCustomer(request));
+    public ResponseEntity<CustomerResponse> createCustomer(@RequestBody @Valid CustomerRequest customerRequest) {
+        Customer customer = customerService.createCustomer(customerRequest);
+        return ResponseEntity.ok(customerMapper.fromCustomer(customer));
     }
 
     @PutMapping
-    public ResponseEntity<Void> updateCustomer(@RequestBody @Valid CustomerRequest request) {
-        this.customerService.updateCustomer(request);
-        return ResponseEntity.accepted().build();
+    public ResponseEntity<CustomerResponse> updateCustomer(@RequestBody @Valid CustomerRequest request) {
+        Customer customer = this.customerService.updateCustomer(request);
+        return ResponseEntity.ok(customerMapper.fromCustomer(customer));
     }
 
     @GetMapping
     public ResponseEntity<List<CustomerResponse>> findAll() {
-        return ResponseEntity.ok(this.customerService.findAllCustomers());
-    }
-
-    @GetMapping("/exists/{customer-id}")
-    public ResponseEntity<Boolean> existsById(@PathVariable("customer-id") String customerId) {
-        return ResponseEntity.ok(this.customerService.existsById(customerId));
+        List<Customer> allCustomers = this.customerService.findAllCustomers();
+        List<CustomerResponse> customerResponses = allCustomers.stream()
+                .map(customerMapper::fromCustomer)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(customerResponses);
     }
 
     @GetMapping("/{customer-id}")
     public ResponseEntity<CustomerResponse> findById(@PathVariable("customer-id") String customerId) {
-        return ResponseEntity.ok(this.customerService.findById(customerId));
+        Customer customer = this.customerService.findById(customerId);
+        return ResponseEntity.ok(customerMapper.fromCustomer(customer));
     }
 
     @DeleteMapping("/{customer-id}")
-    public ResponseEntity<String> delete(@PathVariable("customer-id") String customerId) {
-        this.customerService.deleteCustomer(customerId);
-        return ResponseEntity.accepted().build();
+    public ResponseEntity<CustomerResponse> delete(@PathVariable("customer-id") String customerId) {
+        Customer customer = this.customerService.deleteCustomer(customerId);
+        return ResponseEntity.ok(customerMapper.fromCustomer(customer));
     }
 }
