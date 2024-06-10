@@ -1,11 +1,14 @@
-package com.example.customerserver.customer;
+package com.example.customerserver.customer.util;
 
+import com.example.customerserver.customer.dto.CustomerRequestDTO;
+import com.example.customerserver.customer.dto.CustomerResponseDTO;
+import com.example.customerserver.customer.entity.Customer;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerMapper {
 
-    public Customer toCustomer(CustomerRequest request) {
+    public Customer toCustomer(CustomerRequestDTO request) {
         if (request == null) {
             return null;
         }
@@ -18,11 +21,11 @@ public class CustomerMapper {
                 .build();
     }
 
-    public CustomerResponse fromCustomer(Customer customer) {
+    public CustomerResponseDTO fromCustomer(Customer customer) {
         if (customer == null) {
             return null;
         }
-        return new CustomerResponse(
+        return new CustomerResponseDTO(
                 customer.getId(),
                 customer.getFirstName(),
                 customer.getLastName(),

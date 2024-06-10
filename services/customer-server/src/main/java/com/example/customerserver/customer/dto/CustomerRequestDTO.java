@@ -1,9 +1,10 @@
-package com.example.customerserver.customer;
+package com.example.customerserver.customer.dto;
 
+import com.example.customerserver.customer.entity.Customer;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
-public record CustomerRequest(
+public record CustomerRequestDTO(
         String id,
         @NotNull(message = "Customer firstname is required")
         String firstName,
