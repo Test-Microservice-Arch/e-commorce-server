@@ -1,8 +1,7 @@
-package com.example.customerserver.customer;
+package com.example.customerserver.customer.repository;
 
+import com.example.customerserver.customer.entity.Customer;
 import org.springframework.data.mongodb.repository.MongoRepository;
-
-import java.util.Optional;
 
 public interface CustomerRepository extends MongoRepository<Customer, String> {
 }
