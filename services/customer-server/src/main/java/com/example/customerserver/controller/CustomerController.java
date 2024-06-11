@@ -1,10 +1,10 @@
-package com.example.customerserver.customer.controller;
+package com.example.customerserver.controller;
 
-import com.example.customerserver.customer.dto.CustomerRequestDTO;
-import com.example.customerserver.customer.dto.CustomerResponseDTO;
-import com.example.customerserver.customer.entity.Customer;
-import com.example.customerserver.customer.service.CustomerService;
-import com.example.customerserver.customer.util.CustomerMapper;
+import com.example.customerserver.dto.CustomerRequestDTO;
+import com.example.customerserver.dto.CustomerResponseDTO;
+import com.example.customerserver.entity.Customer;
+import com.example.customerserver.service.CustomerService;
+import com.example.customerserver.util.CustomerMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

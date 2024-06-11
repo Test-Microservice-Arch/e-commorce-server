@@ -1,9 +1,9 @@
-package com.example.customerserver.customer.service;
+package com.example.customerserver.service;
 
-import com.example.customerserver.customer.util.CustomerMapper;
-import com.example.customerserver.customer.repository.CustomerRepository;
-import com.example.customerserver.customer.dto.CustomerRequestDTO;
-import com.example.customerserver.customer.entity.Customer;
+import com.example.customerserver.util.CustomerMapper;
+import com.example.customerserver.repository.CustomerRepository;
+import com.example.customerserver.dto.CustomerRequestDTO;
+import com.example.customerserver.entity.Customer;
 import com.example.customerserver.exception.CustomerNotFoundException;
 import io.micrometer.common.util.StringUtils;
 import lombok.RequiredArgsConstructor;
