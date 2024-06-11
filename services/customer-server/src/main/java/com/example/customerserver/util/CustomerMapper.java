@@ -1,8 +1,8 @@
-package com.example.customerserver.customer.util;
+package com.example.customerserver.util;
 
-import com.example.customerserver.customer.dto.CustomerRequestDTO;
-import com.example.customerserver.customer.dto.CustomerResponseDTO;
-import com.example.customerserver.customer.entity.Customer;
+import com.example.customerserver.dto.CustomerRequestDTO;
+import com.example.customerserver.dto.CustomerResponseDTO;
+import com.example.customerserver.entity.Customer;
 import org.springframework.stereotype.Service;
 
 @Service

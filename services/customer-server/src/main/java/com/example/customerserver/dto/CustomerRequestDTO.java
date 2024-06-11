@@ -1,6 +1,6 @@
-package com.example.customerserver.customer.dto;
+package com.example.customerserver.dto;
 
-import com.example.customerserver.customer.entity.Customer;
+import com.example.customerserver.entity.Customer;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
