@@ -1,0 +1,31 @@
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+#Gradle temporary files
+target/
+build/
+
+#IntelliJ files
+**/*.iml
+**/.idea
+**/.gradle
+
+!/gradle/wrapper/gradle-wrapper.jar
+
+**.adoc
+**.adoc.cleaned
+!index.adoc
+documentation/temp/
+tests/node_modules/
+tests/package-lock.json
+
+app/out/
+shared/out/
+*.hprof
