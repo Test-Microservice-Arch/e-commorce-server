@@ -38,7 +38,7 @@ public class ProductService {
     }
 
     public Product findById(String id) {
-        log.info("find customer by id = {}", id);
+        log.info("find product by id = {}", id);
         Optional<Product> product = this.productRepository.findById(id);
         if (!product.isPresent()) {
             throw new ProductNotFoundException(String.format("Product not found with ID: %s", id));
@@ -47,6 +47,7 @@ public class ProductService {
     }
 
     public List<Product> findAll() {
+        log.info("find all products");
         return productRepository.findAll()
                 .stream()
                 .collect(Collectors.toList());
@@ -54,6 +55,7 @@ public class ProductService {
 
     @Transactional(rollbackFor = ProductPurchaseException.class)
     public List<ProductPurchaseResponseDTO> purchaseProducts(List<ProductPurchaseRequestDTO> request) {
+        log.info("purchase products");
         List<String> productIds = request
                 .stream()
                 .map(ProductPurchaseRequestDTO::productId)
@@ -66,7 +68,7 @@ public class ProductService {
                 .stream()
                 .sorted(Comparator.comparing(ProductPurchaseRequestDTO::productId))
                 .toList();
-        var purchasedProducts = new ArrayList<ProductPurchaseResponseDTO>();
+        List<ProductPurchaseResponseDTO> purchasedProducts = new ArrayList<>();
         for (int i = 0; i < storedProducts.size(); i++) {
             Product product = storedProducts.get(i);
             ProductPurchaseRequestDTO productRequest = sortedRequest.get(i);
