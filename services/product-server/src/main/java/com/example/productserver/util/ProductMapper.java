@@ -1,5 +1,6 @@
 package com.example.productserver.util;
 
+import com.example.productserver.dto.ProductPurchaseResponseDTO;
 import com.example.productserver.dto.ProductRequestDTO;
 import com.example.productserver.dto.ProductResponseDTO;
 import com.example.productserver.entity.Product;
@@ -28,13 +29,13 @@ public class ProductMapper {
         );
     }
 
-//    public ProductPurchaseResponse toproductPurchaseResponse(Product product, double quantity) {
-//        return new ProductPurchaseResponse(
-//                product.getId(),
-//                product.getName(),
-//                product.getDescription(),
-//                product.getPrice(),
-//                quantity
-//        );
-//    }
+    public ProductPurchaseResponseDTO toProductPurchaseResponse(Product product, double quantity) {
+        return new ProductPurchaseResponseDTO(
+                product.getId(),
+                product.getName(),
+                product.getDescription(),
+                product.getPrice(),
+                quantity
+        );
+    }
 }

@@ -1,5 +1,7 @@
 package com.example.productserver.controller;
 
+import com.example.productserver.dto.ProductPurchaseRequestDTO;
+import com.example.productserver.dto.ProductPurchaseResponseDTO;
 import com.example.productserver.dto.ProductRequestDTO;
 import com.example.productserver.dto.ProductResponseDTO;
 import com.example.productserver.entity.Product;
@@ -44,5 +46,10 @@ public class ProductController {
                 .map(productMapper::toProductResponse)
                 .collect(Collectors.toList());
         return ResponseEntity.ok(productResponseDTOS);
+    }
+
+    @PostMapping("/purchase")
+    public ResponseEntity<List<ProductPurchaseResponseDTO>> purchaseProducts(@RequestBody List<ProductPurchaseRequestDTO> productPurchaseRequestDTOS) {
+        return ResponseEntity.ok(productService.purchaseProducts(productPurchaseRequestDTOS));
     }
 }
